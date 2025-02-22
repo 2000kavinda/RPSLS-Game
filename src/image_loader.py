@@ -1,9 +1,6 @@
 import cv2
 
 def load_images():
-    """
-    Loads system hand images.
-    """
     rock = cv2.imread('images/rock.png')
     paper = cv2.imread('images/paper.png')
     scissors = cv2.imread('images/scissors.png')
