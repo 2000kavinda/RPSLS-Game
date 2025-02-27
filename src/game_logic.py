@@ -1,13 +1,22 @@
 import random
 
+choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"]
+
 def generate_system_choice():
-    return random.choice(["Rock", "Paper", "Scissors"])
+    return random.choice(choices)
 
 def determine_winner(user_choice, system_choice):
     if user_choice == system_choice:
         return "It's a Tie!"
-    elif (user_choice == "Rock" and system_choice == "Scissors") or \
-         (user_choice == "Scissors" and system_choice == "Paper") or \
-         (user_choice == "Paper" and system_choice == "Rock"):
+    
+    winning_cases = {
+        "Rock": ["Scissors", "Lizard"],
+        "Paper": ["Rock", "Spock"],
+        "Scissors": ["Paper", "Lizard"],
+        "Lizard": ["Spock", "Paper"],
+        "Spock": ["Scissors", "Rock"]
+    }
+
+    if system_choice in winning_cases[user_choice]:
         return "You Win!"
-    return "System Wins!"
+    return "You Lose!"
