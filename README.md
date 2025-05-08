@@ -1,1 +1,1 @@
-# Rock-Paper-Scissords -Spock-Lizard game
+# Rock-Paper-Scissors -Spock-Lizard game
