@@ -18,5 +18,5 @@ def determine_winner(user_choice, system_choice):
     }
 
     if system_choice in winning_cases[user_choice]:
-        return "You Win!"
-    return "You Lose!"
+        return "Right Side Win!"
+    return "Right Side Lose!"
