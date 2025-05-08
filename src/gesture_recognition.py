@@ -27,13 +27,13 @@ def calculate_distance(point1, point2):
     return math.sqrt((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2)
 
 def calculate_angle(a, b, c):
-    ab = (b[0] - a[0], b[1] - a[1])  
-    bc = (c[0] - b[0], c[1] - b[1])  
-    dot_product = ab[0] * bc[0] + ab[1] * bc[1]  
-    mag_ab = math.sqrt(ab[0]**2 + ab[1]**2) 
-    mag_bc = math.sqrt(bc[0]**2 + bc[1]**2) 
+    ab = (b[0] - a[0], b[1] - a[1])
+    bc = (c[0] - b[0], c[1] - b[1])
+    dot_product = ab[0] * bc[0] + ab[1] * bc[1]
+    mag_ab = math.sqrt(ab[0]**2 + ab[1]**2)
+    mag_bc = math.sqrt(bc[0]**2 + bc[1]**2)
     if mag_ab == 0 or mag_bc == 0:
-        return 0 
+        return 0
     cos_theta = dot_product / (mag_ab * mag_bc)
     cos_theta = max(-1, min(1, cos_theta))
     angle = math.degrees(math.acos(cos_theta))
@@ -55,7 +55,7 @@ def get_gesture(landmarks, w, h):
     pinky_tip = landmarks[20]
     pinky_pip = landmarks[18]
     pinky_mcp = landmarks[17]
-    wrist = landmarks[0]  
+    wrist = landmarks[0]
 
     gap_middle_ring = calculate_distance(middle_tip, ring_tip)
     gap_index_middle = calculate_distance(index_tip, middle_tip)
@@ -75,17 +75,16 @@ def get_gesture(landmarks, w, h):
         angle_pinky < 30 
     ]
 
-    if  fingers[0] and fingers[1] and fingers[2] and  fingers[3] and  fingers[4]:  
+    if fingers[0] and fingers[1] and fingers[2] and fingers[3] and fingers[4]:
         if gap_middle_ring > gap_index_middle * 1.5 and gap_middle_ring > gap_ring_pinky * 1.5:
-            return "Spock"  
-        return "Paper" 
+            return "Spock"
+        return "Paper"
     elif not any(fingers[1:]):
-        if thumb_tip[1]>index_tip[1]:
+        if thumb_tip[1] > index_tip[1]:
             return "Lizard"
-        return "Rock" 
-    elif not fingers[0] and fingers[1] and fingers[2] and not fingers[3] and not fingers[4]:  
-        return "Scissors" 
-
+        return "Rock"
+    elif not fingers[0] and fingers[1] and fingers[2] and not fingers[3] and not fingers[4]:
+        return "Scissors"
     return "Unknown"
 
 def detect_hand_gesture(frame):
@@ -93,9 +92,9 @@ def detect_hand_gesture(frame):
     processed_frame = preprocess_frame(frame)
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     result = hands.process(rgb_frame)
-    
+
     gestures = []  # List to hold the gestures of all detected hands
-    
+
     if result.multi_hand_landmarks:
         for hand_landmarks in result.multi_hand_landmarks:
             mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
@@ -104,3 +103,17 @@ def detect_hand_gesture(frame):
             gestures.append(gesture)  # Append the gesture for each hand detected
 
     return gestures  # Return a list of gestures for all detected hands
+
+def detect_single_hand_gesture(frame):
+    h, w, c = frame.shape
+    processed_frame = preprocess_frame(frame)
+    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    result = hands.process(rgb_frame)
+
+    if result.multi_hand_landmarks:
+        for hand_landmarks in result.multi_hand_landmarks:
+            mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+            landmarks = [(int(lm.x * w), int(lm.y * h)) for lm in hand_landmarks.landmark]
+            return get_gesture(landmarks, w, h)
+
+    return "None"

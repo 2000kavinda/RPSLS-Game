@@ -1,6 +1,6 @@
 
 import cv2
-from gesture_recognition import detect_hand_gesture
+from src.gesture_recognition import detect_single_hand_gesture
 from game_logic import generate_system_choice, determine_winner
 from image_loader import load_images
 from gesture_recognition import preprocess_frame  
@@ -26,7 +26,7 @@ while True:
     
     h, w, c = frame.shape
     
-    user_choice = detect_hand_gesture(frame)
+    user_choice = detect_single_hand_gesture(frame)
     
     if user_choice in ["Rock", "Paper", "Scissors", "Lizard", "Spock"] and user_choice != prev_user_choice:
         system_choice = generate_system_choice()
