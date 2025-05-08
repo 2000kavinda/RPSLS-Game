@@ -1,5 +1,6 @@
 import cv2
 
+# Load and resize images for the game choices
 def load_images():
     rock = cv2.imread('images/rock.png')
     paper = cv2.imread('images/paper.png')
