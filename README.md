@@ -18,6 +18,13 @@ Built for Computer Graphics and Visualization module coursework (2025/2026).
 🤖 system opponent or local 2-player mode  
 🎨 Live webcam overlays with gesture labels and results
 
+📽️ Demo vedio 
+<a href="https://www.youtube.com/watch?v=KQBVOQ79G2s"><img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"></a>
+<br><br>
+
+
+https://github.com/user-attachments/assets/e55e2cd3-5632-4d95-bfe0-39986bc3e401
+
 
 📌 Features
 <a href="https://www.youtube.com/watch?v=KQBVOQ79G2s"><img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"></a>
