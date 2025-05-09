@@ -23,7 +23,11 @@ Built for Computer Graphics and Visualization module coursework (2025/2026).
 <br><br>
 
 
-https://github.com/user-attachments/assets/e55e2cd3-5632-4d95-bfe0-39986bc3e401
+
+
+https://github.com/user-attachments/assets/71fb44e1-66ad-4d5d-8969-a0fffcbe9af1
+
+
 
 
 📌 Features
