@@ -1,4 +1,4 @@
-                     🖐️ Rock-Paper-Scissors-Lizard-Spock (RPSLS) Gesture Recognition Game 🎮
+                       🖐️ Rock-Paper-Scissors-Lizard-Spock (RPSLS) Gesture Recognition Game 🎮
 
 
 A real-time, gesture-based Rock-Paper-Scissors-Lizard-Spock game powered by OpenCV and MediaPipe, allowing users to play using just their hand gestures—no mouse or keyboard required!
