@@ -12,11 +12,11 @@ def show_loading_and_start_game(command, button, original_text):
 
 def start_game_two_hands():
     original_text = button_two_hands.cget("text")  
-    show_loading_and_start_game(["python", "two_hands_game.py"], button_two_hands, original_text)
+    show_loading_and_start_game(["python",  "-m", "src.two_hands_game.py"], button_two_hands, original_text)
 
 def start_game_single_hand():
     original_text = button_single_hand.cget("text")  
-    show_loading_and_start_game(["python", "single_hand_game.py"], button_single_hand, original_text)
+    show_loading_and_start_game(["python","-m", "src.single_hand_game.py"], button_single_hand, original_text)
 
 root = tk.Tk()
 root.title("Rock Paper Scissors Lizard Spock")
